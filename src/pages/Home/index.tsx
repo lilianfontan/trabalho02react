@@ -9,7 +9,7 @@ const Home = () => {
                 <h4>Desafio Github API</h4>
                 <p>DevSuperior - Escola de programação</p>
             </div>
-            <Link to="/cepsearch">
+            <Link to="/gitsearch">
                 <button className="btn btn-primary btn-lg start-button">Começar</button>
             </Link>
         </div>

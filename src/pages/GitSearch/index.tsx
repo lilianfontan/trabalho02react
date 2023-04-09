@@ -5,20 +5,23 @@ import ResultCard from 'components/ResultCard';
 import axios from 'axios';
 
 type FormData = {
-  cep: string;
+  usuario: string;
 };
 
-type Address = {
-  logradouro: string;
+type GitUser = {
+  url: string;
+  seguidores: number;
   localidade: string;
+  nome: string;
+  imagem: string;
 };
 
-const CepSearch = () => {
+const GitSearch = () => {
   const [formData, setFormData] = useState<FormData>({
-    cep: '',
+    usuario: '',
   });
 
-  const [address, setAddress] = useState<Address>();
+  const [gitUser, setGitUser] = useState<GitUser>();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -30,40 +33,40 @@ const CepSearch = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
-      .get(`https://viacep.com.br/ws/${formData.cep}/json/`)
+      .get(`https://api.github.com/users/${formData.usuario}`)
       .then((response) => {
-        setAddress(response.data);
+        setGitUser(response.data);
         console.log(response.data);
       })
       .catch((error) => {
-        setAddress(undefined);
+        setGitUser(undefined);
         console.log(error);
       });
   };
 
   return (
     <div className="cep-search-container">
-      <h1 className="text-primary">Busca CEP</h1>
       <div className="container search-container">
+        <h3>Encontre um perfil Github</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-container">
             <input
               type="text"
-              name="cep"
-              value={formData.cep}
+              name="usuario"
+              value={formData.usuario}
               className="search-input"
-              placeholder="CEP (somente números)"
+              placeholder="Usuário Github"
               onChange={handleChange}
             />
             <button type="submit" className="btn btn-primary search-button">
-              Buscar
+              Encontrar
             </button>
           </div>
         </form>
-        {address && (
+        {gitUser && (
           <>
-            <ResultCard title="Logradouro" description={address.logradouro} />
-            <ResultCard title="Localidade" description={address.localidade} />
+            <ResultCard title="Perfil" description={gitUser.url} />
+            <ResultCard title="Localidade" description={gitUser.localidade} />
           </>
         )}
       </div>
@@ -71,4 +74,4 @@ const CepSearch = () => {
   );
 };
 
-export default CepSearch;
+export default GitSearch;

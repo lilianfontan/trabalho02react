@@ -3,27 +3,30 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+  background-color: #E5E5E5;
 }
 
-.cep-search-container h1 {
+.cep-search-container h3 {
   font-weight: bold;
-  text-align: center;
-  margin: 50px 0;
+  align-items: flex-start;
+  font-size: 38px;
+  font-weight: 500;
 }
 
 .search-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   padding: 30px 40px;
-  background-color: #f6f6f6;
-  border-radius: 5px;
+  background-color: #E6F7FF;
+  border-radius: 16px; 
+  margin-top: 50px; 
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .search-input {
@@ -39,6 +42,8 @@
 
 .search-input::placeholder {
   color: #d3cccc;
+  text-align: left;
+  padding-left: 15px;
 }
 
 .search-button {
