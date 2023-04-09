@@ -1,0 +1,10 @@
+.main-nav {
+  padding-left: 40px;
+  min-height: 40px;
+  background-color: #1890FF;
+  color: #FFF;
+}
+
+.nav-logo-text h4{
+  align-content: center;
+}
