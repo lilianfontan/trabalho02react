@@ -10,10 +10,10 @@ type FormData = {
 
 type GitUser = {
   url: string;
-  seguidores: number;
-  localidade: string;
-  nome: string;
-  imagem: string;
+  followers: string;
+  location: string;
+  name: string;
+  avatar_url: string;
 };
 
 const GitSearch = () => {
@@ -63,13 +63,32 @@ const GitSearch = () => {
             </button>
           </div>
         </form>
-        {gitUser && (
-          <>
-            <ResultCard title="Perfil" description={gitUser.url} />
-            <ResultCard title="Localidade" description={gitUser.localidade} />
-          </>
-        )}
       </div>
+      {gitUser && (
+        <>
+          <div className="container response-container">
+            <div>
+              <img src={gitUser.avatar_url} alt="" />
+            </div>
+            <div className="response-container-data">
+              <div className="informacoes">
+                <h4>Informações</h4>
+              </div>
+              <div className="results-container">
+                <div className="results-container-link">
+                  <div className="title">Perfil: </div>
+                  <div className="description">
+                    <a href="">{gitUser.url}</a>
+                  </div>
+                </div>
+                <ResultCard title="Seguidores: " description={gitUser.followers} />
+                <ResultCard title="Localidade: " description={gitUser.location} />
+                <ResultCard title="Nome: " description={gitUser.name} />
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
